@@ -8,8 +8,8 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { label: 'Biz haqimizda', href: '#about' },
-    { label: 'Hizmatlar', href: '#services' },
+    { label: 'Biz haqimizda', href: '/#about-us' },
+    { label: 'Hizmatlar', href: '/#services' },
     { label: 'Baholar', href: '/baholar' },
   ];
 

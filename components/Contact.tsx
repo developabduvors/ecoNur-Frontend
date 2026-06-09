@@ -37,9 +37,17 @@ export const Contact = () => {
   const [service, setService] = useState('');
   const [sent, setSent]       = useState(false);
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value.replace(/[^a-zA-Z\u0410-\u044F\u0401\u0451\s'-]/g, ''));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value.replace(/\D/g, '').slice(0, 12));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !service) return;
+    if (!name.trim() || phone.length < 9 || !service) return;
 
     try {
       const res = await fetch(`${API_URL}/api/applications`, {
@@ -129,16 +137,23 @@ export const Contact = () => {
                 type="text"
                 placeholder="Ismingiz"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleNameChange}
+                required
+                autoComplete="name"
                 className="w-full bg-white rounded-2xl px-5 py-3.5 text-sm md:text-base
                            text-black placeholder-gray-400 outline-none border border-transparent
                            focus:border-[#3a7d1e] transition-colors duration-200"
               />
               <input
                 type="tel"
-                placeholder="Telefon raqamingiz"
+                inputMode="numeric"
+                placeholder="901234567"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={handlePhoneChange}
+                required
+                minLength={9}
+                maxLength={12}
+                autoComplete="tel"
                 className="w-full bg-white rounded-2xl px-5 py-3.5 text-sm md:text-base
                            text-black placeholder-gray-400 outline-none border border-transparent
                            focus:border-[#3a7d1e] transition-colors duration-200"

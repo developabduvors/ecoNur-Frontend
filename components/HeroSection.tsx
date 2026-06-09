@@ -68,7 +68,7 @@ export const HeroSection = () => {
           <div className="absolute inset-0 z-10 flex items-center justify-center px-8 pt-20">
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white text-center
                            leading-tight drop-shadow-2xl max-w-3xl">
-              Professional tozalash<br />hizmatlari
+              Gilam yuvish va<br />professional tozalash
             </h1>
           </div>
 
@@ -121,10 +121,10 @@ export const HeroSection = () => {
         >
           <div className="w-full max-w-xs flex flex-col items-center gap-5">
             <h1 className="text-[2rem] font-extrabold leading-[1.2] text-white drop-shadow-lg">
-              Professional<br />tozalash<br />hizmatlari
+              Gilam yuvish<br />Toshkentda
             </h1>
             <p className="text-sm text-white/70 leading-relaxed">
-              Eco Nur — ekologik toza va zamonaviy tozalash xizmatlari.
+              Eco Nur — professional gilam yuvish va tozalash xizmatlari. 7+ yillik tajriba.
             </p>
             <div className="flex flex-col gap-3 w-full">
               <a href="#about"

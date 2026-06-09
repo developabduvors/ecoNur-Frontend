@@ -17,7 +17,8 @@ export const AboutSection = () => (
             <span className="text-[#3a7d1e] font-semibold underline underline-offset-4">
               Eco Nur
             </span>
-            {' '}— uzoq yillik tajribaga ega professional &ldquo;klining&rdquo; jamoasi
+            {' '}— Toshkentda gilam yuvish, mebel tozalash va professional klining
+            xizmatlari. 7+ yillik tajriba, 3000+ mamnun mijoz.
           </p>
         </div>
 

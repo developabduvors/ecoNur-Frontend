@@ -25,7 +25,7 @@ export const Footer = () => (
             </span>
           </div>
           <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-            Tabiat bilan uyg&apos;un, zamonaviy yashash uchun eng yaxshi yechimlar.
+            Toshkentda gilam yuvish va professional tozalash xizmatlari.
           </p>
         </div>
 
@@ -33,8 +33,8 @@ export const Footer = () => (
         <nav className="flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 md:gap-8">
           {[
             { label: 'Biz haqimizda', href: '#about' },
+            { label: 'Gilam yuvish', href: '/gilam-yuvish' },
             { label: 'Xizmatlar',    href: '#services' },
-            { label: 'Natijalar',    href: '#results' },
             { label: 'Baholar',      href: '/baholar' },
           ].map((item) => (
             <Link

@@ -4,6 +4,27 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { API_URL } from '@/lib/api';
 
+const SERVICES = [
+  'Gilam yuvish',
+  'Korpa va korpacha yuvish',
+  'Yumshoq mebel yuvish',
+  'Burschatka va kafel yuvish',
+] as const;
+
+function showNotification(title: string, body: string) {
+  if (typeof window === 'undefined' || !('Notification' in window)) return;
+
+  if (Notification.permission === 'granted') {
+    new Notification(title, { body, icon: '/img/Eco Nur.svg' });
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then((perm) => {
+      if (perm === 'granted') {
+        new Notification(title, { body, icon: '/img/Eco Nur.svg' });
+      }
+    });
+  }
+}
+
 const PhoneIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
     <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/>
@@ -11,28 +32,36 @@ const PhoneIcon = () => (
 );
 
 export const Contact = () => {
-  const [name, setName]   = useState('');
-  const [phone, setPhone] = useState('');
-  const [sent, setSent]   = useState(false);
+  const [name, setName]       = useState('');
+  const [phone, setPhone]     = useState('');
+  const [service, setService] = useState('');
+  const [sent, setSent]       = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() && !phone.trim()) return;
+    if (!name.trim() || !phone.trim() || !service) return;
 
     try {
-      await fetch(`${API_URL}/api/applications`, {
+      const res = await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone }),
+        body: JSON.stringify({ name, phone, service }),
       });
-    } catch {
-      // Backend ishlamasa ham UI da xato ko'rsatmaymiz
-    }
 
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setName('');
-    setPhone('');
+      if (res.ok) {
+        showNotification(
+          'Eco Nur',
+          'Xabaringiz qabul qilindi! Tez orada bog\'lanamiz.',
+        );
+        setSent(true);
+        setTimeout(() => setSent(false), 3000);
+        setName('');
+        setPhone('');
+        setService('');
+      }
+    } catch {
+      // Tarmoq xatosi
+    }
   };
 
   return (
@@ -114,6 +143,26 @@ export const Contact = () => {
                            text-black placeholder-gray-400 outline-none border border-transparent
                            focus:border-[#3a7d1e] transition-colors duration-200"
               />
+              <select
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                required
+                className="w-full bg-white rounded-2xl px-5 py-3.5 text-sm md:text-base
+                           text-black outline-none border border-transparent
+                           focus:border-[#3a7d1e] transition-colors duration-200
+                           appearance-none cursor-pointer
+                           bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%3E%3Cpath%20fill%3D%22%23999%22%20d%3D%22M1%201l5%205%205-5%22%2F%3E%3C%2Fsvg%3E')]
+                           bg-no-repeat bg-[right_1.25rem_center]"
+              >
+                <option value="" disabled>
+                  Xizmatni tanlang
+                </option>
+                {SERVICES.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
               <div className="flex justify-end mt-1">
                 <button
                   type="submit"

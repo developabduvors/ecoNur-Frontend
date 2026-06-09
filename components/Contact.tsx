@@ -31,9 +31,17 @@ const PhoneIcon = () => (
   </svg>
 );
 
+const PHONE_PREFIX = '+998';
+
+function formatPhoneInput(value: string): string {
+  let digits = value.replace(/\D/g, '');
+  if (digits.startsWith('998')) digits = digits.slice(3);
+  return `${PHONE_PREFIX}${digits.slice(0, 9)}`;
+}
+
 export const Contact = () => {
   const [name, setName]       = useState('');
-  const [phone, setPhone]     = useState('');
+  const [phone, setPhone]     = useState(PHONE_PREFIX);
   const [service, setService] = useState('');
   const [sent, setSent]       = useState(false);
 
@@ -42,12 +50,13 @@ export const Contact = () => {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(e.target.value.replace(/\D/g, '').slice(0, 12));
+    setPhone(formatPhoneInput(e.target.value));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || phone.length < 9 || !service) return;
+    const digits = phone.replace(/\D/g, '');
+    if (!name.trim() || digits.length !== 12 || !service) return;
 
     try {
       const res = await fetch(`${API_URL}/api/applications`, {
@@ -64,7 +73,7 @@ export const Contact = () => {
         setSent(true);
         setTimeout(() => setSent(false), 3000);
         setName('');
-        setPhone('');
+        setPhone(PHONE_PREFIX);
         setService('');
       }
     } catch {
@@ -147,12 +156,13 @@ export const Contact = () => {
               <input
                 type="tel"
                 inputMode="numeric"
-                placeholder="901234567"
+                placeholder="+998 90 123 45 67"
                 value={phone}
                 onChange={handlePhoneChange}
+                onFocus={() => { if (!phone) setPhone(PHONE_PREFIX); }}
                 required
-                minLength={9}
-                maxLength={12}
+                minLength={13}
+                maxLength={13}
                 autoComplete="tel"
                 className="w-full bg-white rounded-2xl px-5 py-3.5 text-sm md:text-base
                            text-black placeholder-gray-400 outline-none border border-transparent

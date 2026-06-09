@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { API_URL } from '@/lib/api';
 
 const SERVICES = [
@@ -11,23 +11,15 @@ const SERVICES = [
   'Burschatka va kafel yuvish',
 ] as const;
 
-function showNotification(title: string, body: string) {
-  if (typeof window === 'undefined' || !('Notification' in window)) return;
-
-  if (Notification.permission === 'granted') {
-    new Notification(title, { body, icon: '/img/Eco Nur.svg' });
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission().then((perm) => {
-      if (perm === 'granted') {
-        new Notification(title, { body, icon: '/img/Eco Nur.svg' });
-      }
-    });
-  }
-}
-
 const PhoneIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
     <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/>
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
 
@@ -43,7 +35,7 @@ export const Contact = () => {
   const [name, setName]       = useState('');
   const [phone, setPhone]     = useState(PHONE_PREFIX);
   const [service, setService] = useState('');
-  const [sent, setSent]       = useState(false);
+  const [toast, setToast]     = useState(false);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value.replace(/[^a-zA-Z\u0410-\u044F\u0401\u0451\s'-]/g, ''));
@@ -59,29 +51,53 @@ export const Contact = () => {
     if (!name.trim() || digits.length !== 12 || !service) return;
 
     try {
-      const res = await fetch(`${API_URL}/api/applications`, {
+      await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, phone, service }),
       });
+    } catch { /* backend o'chiq bo'lsa ham ok */ }
 
-      if (res.ok) {
-        showNotification(
-          'Eco Nur',
-          'Xabaringiz qabul qilindi! Tez orada bog\'lanamiz.',
-        );
-        setSent(true);
-        setTimeout(() => setSent(false), 3000);
-        setName('');
-        setPhone(PHONE_PREFIX);
-        setService('');
-      }
-    } catch {
-      // Tarmoq xatosi
-    }
+    setToast(true);
+    setTimeout(() => setToast(false), 4000);
+    setName('');
+    setPhone(PHONE_PREFIX);
+    setService('');
   };
 
   return (
+    <>
+      {/* Toast notification */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            className="fixed top-6 right-6 z-[999] flex items-center gap-3
+                       bg-[#3a7d1e] text-white px-5 py-4 rounded-2xl shadow-2xl
+                       max-w-xs md:max-w-sm"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <CheckIcon />
+            </span>
+            <div className="flex flex-col">
+              <span className="font-bold text-sm">Ariza qabul qilindi!</span>
+              <span className="text-white/80 text-xs mt-0.5">Tez orada siz bilan bog&apos;lanamiz</span>
+            </div>
+            <button
+              onClick={() => setToast(false)}
+              className="ml-2 text-white/60 hover:text-white transition-colors flex-shrink-0"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     <section id="about" className="w-full bg-white py-10 md:py-14">
       <div className="max-w-screen-xl mx-auto px-6 md:px-16 lg:px-24">
 
@@ -196,7 +212,7 @@ export const Contact = () => {
                              hover:bg-[#3a7d1e] hover:text-white hover:border-[#3a7d1e]
                              transition-colors duration-200 shadow-sm"
                 >
-                  {sent ? 'Yuborildi ✓' : 'Yuborish'}
+                  Yuborish
                 </button>
               </div>
             </form>
@@ -205,5 +221,6 @@ export const Contact = () => {
         </motion.div>
       </div>
     </section>
+    </>
   );
 };

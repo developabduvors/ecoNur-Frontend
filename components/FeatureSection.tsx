@@ -16,7 +16,7 @@ type Service = {
 
 const fallbackServices: Service[] = [
   { id: 1, title: 'Gilam yuvish',             priceFrom: 12000, priceTo: 15000,  unit: '1 kv.m', image: '/img/Gilam1.svg' },
-  { id: 2, title: 'Yumshoq mebel va stullar', priceFrom: 30000, priceTo: 120000, unit: 'dona',   image: '/img/Rectangle 37.svg' },
+  { id: 2, title: 'Yumshoq mebel va stullar', priceFrom: 30000, priceTo: 120000, unit: 'dona',   image: '/img/Divan.svg' },
   { id: 3, title: 'Korpacha',                 priceFrom: 50000, priceTo: 80000,  unit: 'dona',   image: '/img/Korpacha.svg' },
   { id: 4, title: 'Burchatka',                priceFrom: 15000, priceTo: 30000,  unit: 'dona',   image: '/img/Burchatka.svg' },
 ];
@@ -27,7 +27,7 @@ export const FeatureSection = () => {
   const [services, setServices] = useState<Service[]>(fallbackServices);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/services`, { signal: AbortSignal.timeout(3000) })
+    fetch(`${API_URL}/api/services`, { signal: AbortSignal.timeout(2000) })
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
       .then(j => { if (j.success && j.data?.length) setServices(j.data); })
       .catch(() => {});

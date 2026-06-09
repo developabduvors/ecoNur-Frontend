@@ -86,7 +86,7 @@ export const ResultsSection = () => (
         <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.16 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 35.svg" alt="Tezkorlik" fill
+          <Image src="/img/Rectangle 37.svg" alt="Tezkorlik" fill
             className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
             <span className="text-white font-semibold text-sm drop-shadow">Tezkorlik</span>
@@ -113,7 +113,7 @@ export const ResultsSection = () => (
         <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.24 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 36.svg" alt="24/7 hizmat" fill
+          <Image src="/img/Rectangle 35.svg" alt="24/7 hizmat" fill
             className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
             <span className="text-white font-semibold text-sm drop-shadow">24/7 hizmat</span>
@@ -124,7 +124,7 @@ export const ResultsSection = () => (
         <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.32 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 37.svg" alt="Professional yondashuv" fill
+          <Image src="/img/Rectangle 36.svg" alt="Professional yondashuv" fill
             className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
             <span className="text-white font-semibold text-sm drop-shadow">Professional yondashuv</span>

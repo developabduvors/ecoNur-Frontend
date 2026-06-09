@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { API_URL } from '@/lib/api';
 
 type Service = {
   id: number;
@@ -26,7 +27,7 @@ export const FeatureSection = () => {
   const [services, setServices] = useState<Service[]>(fallbackServices);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/services', { signal: AbortSignal.timeout(3000) })
+    fetch(`${API_URL}/api/services`, { signal: AbortSignal.timeout(3000) })
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
       .then(j => { if (j.success && j.data?.length) setServices(j.data); })
       .catch(() => {});

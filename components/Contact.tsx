@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { API_URL } from '@/lib/api';
 
 const PhoneIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +20,7 @@ export const Contact = () => {
     if (!name.trim() && !phone.trim()) return;
 
     try {
-      await fetch('http://localhost:5000/api/applications', {
+      await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, phone }),

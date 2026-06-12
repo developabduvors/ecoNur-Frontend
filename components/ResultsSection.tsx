@@ -52,85 +52,26 @@ export const ResultsSection = () => (
         ))}
       </div>
 
-      {/* ── DESKTOP: katta | 2x2 | katta ── */}
+      {/* ── DESKTOP: katta | 2x2 | katta (bitta manba: items) ── */}
       <div className="hidden md:grid grid-cols-4 gap-4" style={{ gridTemplateRows: 'auto auto' }}>
-
-        {/* 1: katta chap, 2 qator */}
-        <motion.div
-          className="relative rounded-2xl overflow-hidden row-span-2 group"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          <Image src="/img/oka.svg" alt="O'z ishini ustasi" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">O&apos;z ishini ustasi</span>
-          </div>
-        </motion.div>
-
-        {/* 2: 7+ yillik tajriba */}
-        <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.08 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/yuvotgan.svg" alt="7+ yillik tajriba" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">7+ yillik tajriba</span>
-          </div>
-        </motion.div>
-
-        {/* 3: Tezkorlik */}
-        <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.16 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 37.svg" alt="Tezkorlik" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">Tezkorlik</span>
-          </div>
-        </motion.div>
-
-        {/* 4: katta o'ng, 2 qator */}
-        <motion.div
-          className="relative rounded-2xl overflow-hidden row-span-2 group"
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          <Image src="/img/Rectangle 33 (1).svg" alt="Hamyonbop" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">Hamyonbop</span>
-          </div>
-        </motion.div>
-
-        {/* 5: 24/7 hizmat */}
-        <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.24 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 35.svg" alt="24/7 hizmat" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">24/7 hizmat</span>
-          </div>
-        </motion.div>
-
-        {/* 6: Professional yondashuv */}
-        <motion.div className="relative rounded-2xl overflow-hidden group" style={{ aspectRatio: '4/3' }}
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.32 }} whileHover={{ scale: 1.03 }}>
-          <Image src="/img/Rectangle 36.svg" alt="Professional yondashuv" fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
-            <span className="text-white font-semibold text-sm drop-shadow">Professional yondashuv</span>
-          </div>
-        </motion.div>
-
+        {items.map((item, i) => (
+          <motion.div
+            key={i}
+            className={`relative rounded-2xl overflow-hidden group ${item.big ? 'row-span-2' : ''}`}
+            style={item.big ? undefined : { aspectRatio: '4/3' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: i * 0.07 }}
+            whileHover={{ scale: item.big ? 1.02 : 1.03 }}
+          >
+            <Image src={item.img} alt={item.label} fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3">
+              <span className="text-white font-semibold text-sm drop-shadow">{item.label}</span>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>

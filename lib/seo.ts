@@ -7,6 +7,15 @@ export const business = {
   phone2: '+998901243535',
   city: 'Toshkent',
   country: 'UZ',
+  // Aniq manzil — Google Maps profili bilan AYNAN bir xil bo'lishi shart (NAP izchilligi)
+  street: 'Quruvchi mahalla',
+  district: 'Yunusobod tumani',
+  postalCode: '', // bilsangiz qo'shing: masalan '100000'
+  // Geo-koordinata — Maps'da nuqtangizni o'ng tugma bilan bosib nusxalang, keyin shu yerga yozing
+  geo: {
+    lat: 0, // masalan: 41.3640
+    lng: 0, // masalan: 69.2870
+  },
   priceFrom: 12000,
   priceTo: 15000,
   priceUnit: '1 kv.m',
@@ -23,9 +32,23 @@ export function localBusinessJsonLd() {
       'Eco Nur — Toshkentda professional gilam yuvish, mebel tozalash va klining xizmatlari. 7+ yillik tajriba, 24/7 xizmat.',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: business.street,
       addressLocality: business.city,
+      // Tuman — region maydonida hududiy signal beradi
+      addressRegion: business.district,
+      ...(business.postalCode ? { postalCode: business.postalCode } : {}),
       addressCountry: business.country,
     },
+    // geo faqat to'ldirilgan bo'lsa qo'shiladi (0,0 noto'g'ri nuqta yubormaslik uchun)
+    ...(business.geo.lat && business.geo.lng
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: business.geo.lat,
+            longitude: business.geo.lng,
+          },
+        }
+      : {}),
     areaServed: {
       '@type': 'City',
       name: 'Toshkent',

@@ -13,8 +13,8 @@ export const business = {
   postalCode: '', // bilsangiz qo'shing: masalan '100000'
   // Geo-koordinata — Maps'da nuqtangizni o'ng tugma bilan bosib nusxalang, keyin shu yerga yozing
   geo: {
-    lat: 0, // masalan: 41.3640
-    lng: 0, // masalan: 69.2870
+    lat: 41.2876351, // Google Maps'dan olingan aniq koordinata
+    lng: 69.228153,
   },
   priceFrom: 12000,
   priceTo: 15000,
@@ -47,6 +47,8 @@ export function localBusinessJsonLd() {
             latitude: business.geo.lat,
             longitude: business.geo.lng,
           },
+          // Xaritadagi aniq nuqtaga bevosita havola — lokal reyting signali
+          hasMap: `https://www.google.com/maps?q=${business.geo.lat},${business.geo.lng}`,
         }
       : {}),
     areaServed: {
@@ -82,6 +84,33 @@ export function localBusinessJsonLd() {
         },
       ],
     },
+  };
+}
+
+// FAQ schema — Google'da "savol-javob" rich-snippet chiqaradi, CTR oshiradi
+export function faqJsonLd(items: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
+}
+
+// Breadcrumb — qidiruv natijasida sayt yo'lini ko'rsatadi (URL o'rniga chiroyli yo'l)
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
+    })),
   };
 }
 

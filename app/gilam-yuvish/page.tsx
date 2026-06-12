@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
-import { SITE_URL, business, serviceJsonLd } from '@/lib/seo';
+import { SITE_URL, business, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Gilam yuvish Toshkent — Eco Nur | Professional gilam tozalash',
@@ -26,6 +26,18 @@ export const metadata: Metadata = {
     siteName: 'Eco Nur',
     locale: 'uz_UZ',
     type: 'website',
+    images: [{ url: '/img/images.jpg', width: 1200, height: 630, alt: 'Gilam yuvish — Eco Nur' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gilam yuvish Toshkent — Eco Nur',
+    description: 'Professional gilam yuvish 12 000 so\'mdan. Bepul yetkazish, 24/7.',
+    images: ['/img/images.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
 };
 
@@ -35,12 +47,45 @@ const jsonLd = serviceJsonLd(
   '/gilam-yuvish',
 );
 
+// Real savol-javoblar — Google bularni qidiruv natijasida ochiladigan blok qilib chiqaradi
+const faqItems = [
+  {
+    q: 'Toshkentda gilam yuvish qancha turadi?',
+    a: `Gilam yuvish narxi ${business.priceFrom.toLocaleString('uz-UZ')} so'mdan boshlanadi (1 kv.m uchun). Aniq narx gilam turi va o'lchamiga bog'liq.`,
+  },
+  {
+    q: 'Gilamni o\'zingiz olib ketasizmi?',
+    a: 'Ha, Toshkent bo\'ylab gilamni uyingizdan bepul olib ketamiz, tozalaymiz va qaytarib yetkazamiz.',
+  },
+  {
+    q: 'Gilam yuvish necha kun davom etadi?',
+    a: 'Odatda 1–2 kun. Shoshilinch xizmat ham mavjud — qo\'ng\'iroq qilib aniqlang.',
+  },
+  {
+    q: 'Qanday gilamlarni yuvasiz?',
+    a: 'Jun, sintetik, ipak, viskoza va boshqa barcha turdagi gilamlarni professional darajada tozalaymiz.',
+  },
+];
+const faqLd = faqJsonLd(faqItems);
+const breadcrumbLd = breadcrumbJsonLd([
+  { name: 'Bosh sahifa', path: '/' },
+  { name: 'Gilam yuvish', path: '/gilam-yuvish' },
+]);
+
 export default function GilamYuvishPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <div className="min-h-screen flex flex-col bg-white">
         <Header />
@@ -103,6 +148,22 @@ export default function GilamYuvishPage() {
                 <li>Professional tozalash va quritish</li>
                 <li>Tayyor gilamni manzilingizga yetkazamiz</li>
               </ol>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-5">
+                Ko&apos;p so&apos;raladigan savollar
+              </h2>
+              <div className="space-y-5 max-w-3xl">
+                {faqItems.map((item) => (
+                  <div key={item.q}>
+                    <h3 className="text-lg font-semibold text-black mb-1">
+                      {item.q}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
             </section>
 
             <div className="flex flex-wrap gap-4">

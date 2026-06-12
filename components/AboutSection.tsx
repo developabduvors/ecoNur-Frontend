@@ -13,8 +13,8 @@ export const AboutSection = () => (
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight">
             Biz haqimizda
           </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed">
-            <span className="text-[#3a7d1e] font-semibold underline underline-offset-4">
+          <p className="text-xl md:text-2xl lg:text-[1.7rem] text-gray-700 leading-relaxed">
+            <span className="text-[#3a7d1e] font-bold underline underline-offset-4">
               Eco Nur
             </span>
             {' '}— Toshkentda gilam yuvish, mebel tozalash va professional klining
@@ -24,7 +24,7 @@ export const AboutSection = () => (
 
         {/* O'ng / pastki: rasm */}
         <div className="relative flex-shrink-0
-                        w-full h-[300px]
+                        w-full aspect-[16/9] md:aspect-auto
                         md:w-[320px] md:h-auto
                         lg:w-[400px]">
           <Image

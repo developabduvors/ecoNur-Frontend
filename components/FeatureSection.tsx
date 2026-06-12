@@ -88,12 +88,12 @@ export const FeatureSection = () => {
                 </div>
 
                 {/* Yashil bar */}
-                <div className="bg-[#3a7d1e] px-6 py-4 flex items-center justify-between gap-4">
-                  <span className="text-white font-bold text-base md:text-lg leading-tight flex-shrink-0">
+                <div className="bg-[#3a7d1e] px-4 py-3 md:px-6 md:py-4 flex items-center justify-between gap-2 md:gap-4">
+                  <span className="text-white font-bold text-sm md:text-lg leading-tight min-w-0 truncate">
                     {s.title}
                   </span>
-                  <div className="w-px h-6 bg-white/40 flex-shrink-0" />
-                  <span className="text-white/90 text-sm md:text-base whitespace-nowrap">
+                  <div className="w-px h-5 md:h-6 bg-white/40 flex-shrink-0" />
+                  <span className="text-white/90 text-xs md:text-base whitespace-nowrap flex-shrink-0">
                     {fmt(s.priceFrom)}~{fmt(s.priceTo)} so&apos;m
                   </span>
                 </div>

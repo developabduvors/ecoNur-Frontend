@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Eco Nur",
   },
   description:
-    "Toshkentda professional gilam yuvish — Eco Nur. Gilam, mebel va korpacha tozalash 12 000 so'mdan. Bepul olib ketish va yetkazish, 7+ yillik tajriba, 24/7. ☎ +998 95 197 35 35.",
+    "Toshkentda professional gilam yuvish — Eco Nur. Gilam, mebel va korpacha tozalash 12 000 so'mdan. Bepul olib ketish va yetkazish, 7+ yillik tajriba, 24/7. ☎ +998 90 124 35 35.",
   keywords: [
     "gilam yuvish",
     "gilam yuvish toshkent",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gilam yuvish Toshkent — Eco Nur",
     description:
-      "Professional gilam yuvish 12 000 so'mdan. Bepul yetkazish, 24/7. ☎ +998 95 197 35 35.",
+      "Professional gilam yuvish 12 000 so'mdan. Bepul yetkazish, 24/7. ☎ +998 90 124 35 35.",
     images: [OG_IMAGE.url],
   },
   robots: {

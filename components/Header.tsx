@@ -46,7 +46,7 @@ export const Header = () => {
 
           {/* Bog'lanish — yashil tugma */}
           <a
-            href="tel:+998951973535"
+            href="tel:+998901243535"
             className="flex-shrink-0 bg-[#3a7d1e] text-white font-bold text-sm
                        px-6 py-2.5 rounded-full hover:bg-[#2d6316] transition-colors duration-200 shadow-lg"
           >
@@ -95,10 +95,10 @@ export const Header = () => {
               {l.label}
             </Link>
           ))}
-          <a href="tel:+998951973535"
+          <a href="tel:+998901243535"
             className="mx-4 my-4 flex items-center justify-center gap-3
                        bg-[#3a7d1e] text-white font-bold text-base rounded-2xl py-4">
-            📞 +998 (95) 197-35-35
+            📞 +998 (90) 124-35-35
           </a>
         </div>
         <div className="flex-1 bg-black/40" onClick={() => setOpen(false)} />

@@ -8,7 +8,7 @@ import { SITE_URL, business, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from '
 export const metadata: Metadata = {
   title: 'Gilam yuvish Toshkent — Eco Nur | Professional gilam tozalash',
   description:
-    'Toshkentda gilam yuvish xizmati. Eco Nur — professional gilam tozalash, 12 000 so\'mdan. Bepul olib ketish va yetkazish. 7+ yillik tajriba, 24/7 qo\'ng\'iroq: +998 95 197 35 35.',
+    'Toshkentda gilam yuvish xizmati. Eco Nur — professional gilam tozalash, 12 000 so\'mdan. Bepul olib ketish va yetkazish. 7+ yillik tajriba, 24/7 qo\'ng\'iroq: +998 90 124 35 35.',
   keywords: [
     'gilam yuvish',
     'gilam yuvish toshkent',

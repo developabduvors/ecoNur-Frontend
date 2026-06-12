@@ -3,8 +3,7 @@ export const SITE_NAME = 'Eco Nur';
 
 export const business = {
   name: 'Eco Nur',
-  phone: '+998951973535',
-  phone2: '+998901243535',
+  phone: '+998901243535',
   city: 'Toshkent',
   country: 'UZ',
   // Aniq manzil — Google Maps profili bilan AYNAN bir xil bo'lishi shart (NAP izchilligi)

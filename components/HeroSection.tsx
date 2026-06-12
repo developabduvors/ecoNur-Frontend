@@ -56,7 +56,7 @@ export const HeroSection = () => {
 
             {/* O'ng: Bog'lanish */}
             <a
-              href="tel:+998951973535"
+              href="tel:+998901243535"
               className="flex-shrink-0 bg-[#3a7d1e] text-white font-bold text-base
                          px-7 py-3 rounded-full hover:bg-[#2d6316] transition-colors duration-200 shadow-lg"
             >

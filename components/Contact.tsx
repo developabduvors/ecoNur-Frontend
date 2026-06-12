@@ -129,7 +129,7 @@ export const Contact = () => {
             </p>
 
             <div className="flex flex-col gap-3">
-              {['+998 (95) 197-35-35', '+998 (90) 124-35-35'].map((num) => (
+              {['+998 (90) 124-35-35'].map((num) => (
                 <a
                   key={num}
                   href={`tel:${num.replace(/\D/g, '')}`}

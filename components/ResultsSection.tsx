@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const items = [
-  { img: '/img/oka.svg',              label: "O'z ishini ustasi",    big: true  },
-  { img: '/img/yuvotgan.svg',         label: '7+ yillik tajriba',    big: false },
-  { img: '/img/Rectangle 37.svg',     label: 'Tezkorlik',            big: false },
-  { img: '/img/Rectangle 33 (1).svg', label: 'Hamyonbop',            big: true  },
-  { img: '/img/Rectangle 35.svg',     label: '24/7 hizmat',          big: false },
-  { img: '/img/Rectangle 36.svg',     label: 'Professional yondashuv', big: false },
+  { img: '/img/oka.webp',              label: "O'z ishini ustasi",    big: true  },
+  { img: '/img/yuvotgan.webp',         label: '7+ yillik tajriba',    big: false },
+  { img: '/img/Rectangle 37.webp',     label: 'Tezkorlik',            big: false },
+  { img: '/img/Rectangle 33 (1).webp', label: 'Hamyonbop',            big: true  },
+  { img: '/img/Rectangle 35.webp',     label: '24/7 hizmat',          big: false },
+  { img: '/img/Rectangle 36.webp',     label: 'Professional yondashuv', big: false },
 ];
 
 const Card = ({ img, label, delay }: { img: string; label: string; delay: number }) => (

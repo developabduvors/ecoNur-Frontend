@@ -28,8 +28,8 @@ export const AboutSection = () => (
                         md:w-[320px] md:h-auto
                         lg:w-[400px]">
           <Image
-            src="/img/Rectangle 30.svg"
-            alt="Eco Nur Carpet Cleaning"
+            src="/img/Rectangle 30.webp"
+            alt="Toshkentda professional gilam yuvish xizmati — Eco Nur"
             fill
             className="object-cover object-center"
             priority

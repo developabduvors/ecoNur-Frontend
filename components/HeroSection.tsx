@@ -12,8 +12,8 @@ export const HeroSection = () => {
         {/* Subtract.svg — relative, to'liq kenglikda, o'z ichida gilam rasmi bor */}
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1220 / 772' }}>
           <Image
-            src="/img/Subtract.svg"
-            alt="Eco Nur hero"
+            src="/img/Subtract.webp"
+            alt="Gilam yuvish Toshkent — Eco Nur professional tozalash"
             fill
             className="object-fill animate-zoom-in"
             priority
@@ -27,7 +27,7 @@ export const HeroSection = () => {
           >
             {/* Chap: Logo */}
             <div className="flex items-center gap-2.5 flex-shrink-0">
-              <Image src="/img/Eco Nur.svg" alt="Eco Nur" width={42} height={42} priority />
+              <Image src="/img/Eco Nur.webp" alt="Eco Nur" width={42} height={42} priority />
               <span className="text-base font-black text-white tracking-widest uppercase drop-shadow">
                 ECO NUR
               </span>
@@ -106,8 +106,8 @@ export const HeroSection = () => {
       <div className="md:hidden relative w-full overflow-hidden" style={{ minHeight: 'calc(100vh - 57px)' }}>
         <div className="absolute inset-0">
           <Image
-            src="/img/Subtract.svg"
-            alt="background"
+            src="/img/Subtract.webp"
+            alt="Gilam yuvish va professional tozalash xizmati Toshkentda"
             fill
             className="object-cover object-center animate-zoom-in"
             priority

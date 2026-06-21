@@ -18,8 +18,8 @@ export const VisualShowcase = () => (
         {/* Screen content — glam image */}
         <div className="w-full aspect-[9/19.5] relative">
           <Image
-            src="/img/glam.svg"
-            alt="Eco Nur app screen"
+            src="/img/glam.webp"
+            alt="Eco Nur gilam yuvish ilovasi — onlayn buyurtma"
             fill
             className="object-cover object-center"
             priority

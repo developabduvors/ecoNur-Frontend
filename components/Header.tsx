@@ -21,7 +21,7 @@ export const Header = () => {
 
           {/* Logo — chap */}
           <div className="flex items-center gap-2 flex-shrink-0">
-            <Image src="/img/Eco Nur.webp" alt="Eco Nur" width={36} height={36} priority />
+            <Image src="/img/Eco Nur.svg" alt="Eco Nur" width={36} height={36} priority />
             <span className="text-sm font-black text-white tracking-widest uppercase drop-shadow">
               ECO NUR
             </span>
@@ -59,7 +59,7 @@ export const Header = () => {
       <header className="sticky top-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-b border-gray-100">
         <div className="px-5 py-3.5 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Image src="/img/Eco Nur.webp" alt="Eco Nur" width={30} height={30} priority />
+            <Image src="/img/Eco Nur.svg" alt="Eco Nur" width={30} height={30} priority />
             <span className="text-sm font-black text-[#3a7d1e] tracking-widest uppercase">ECO NUR</span>
           </div>
           <button

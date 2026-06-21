@@ -27,7 +27,7 @@ export const HeroSection = () => {
           >
             {/* Chap: Logo */}
             <div className="flex items-center gap-2.5 flex-shrink-0">
-              <Image src="/img/Eco Nur.webp" alt="Eco Nur" width={42} height={42} priority />
+              <Image src="/img/Eco Nur.svg" alt="Eco Nur" width={42} height={42} priority />
               <span className="text-base font-black text-white tracking-widest uppercase drop-shadow">
                 ECO NUR
               </span>

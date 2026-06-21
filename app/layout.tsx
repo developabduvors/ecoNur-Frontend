@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: "Gilam yuvish Toshkent — Eco Nur | 12 000 so'mdan, bepul yetkazish",
+    default: "Gilam yuvish Toshkent — Eco Nur | Bepul olib kelib-ketish 24/7",
     template: "%s | Eco Nur",
   },
   description:
-    "Toshkentda professional gilam yuvish — Eco Nur. Gilam, mebel va korpacha tozalash 12 000 so'mdan. Bepul olib ketish va yetkazish, 7+ yillik tajriba, 24/7. ☎ +998 90 124 35 35.",
+    "Toshkentda professional gilam yuvish 12 000 so'mdan ✅ Bepul olib ketamiz va 1-2 kunda toza, hidsiz qaytaramiz. 7+ yil tajriba, 3000+ mamnun mijoz, 24/7. ☎ +998 90 124 35 35 — hoziroq qo'ng'iroq qiling.",
   keywords: [
     "gilam yuvish",
     "gilam yuvish toshkent",

@@ -12,7 +12,7 @@ export const HeroSection = () => {
         {/* Subtract.svg — relative, to'liq kenglikda, o'z ichida gilam rasmi bor */}
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1220 / 772' }}>
           <Image
-            src="/img/Subtract.webp"
+            src="/img/Subtract.svg"
             alt="Gilam yuvish Toshkent — Eco Nur professional tozalash"
             fill
             className="object-fill animate-zoom-in"
@@ -106,7 +106,7 @@ export const HeroSection = () => {
       <div className="md:hidden relative w-full overflow-hidden" style={{ minHeight: 'calc(100vh - 57px)' }}>
         <div className="absolute inset-0">
           <Image
-            src="/img/Subtract.webp"
+            src="/img/Subtract.svg"
             alt="Gilam yuvish va professional tozalash xizmati Toshkentda"
             fill
             className="object-cover object-center animate-zoom-in"

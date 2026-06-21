@@ -29,7 +29,16 @@ export const FeatureSection = () => {
   useEffect(() => {
     fetch(`${API_URL}/api/services`, { signal: AbortSignal.timeout(2000) })
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-      .then(j => { if (j.success && j.data?.length) setServices(j.data); })
+      .then(j => {
+        if (j.success && j.data?.length) {
+          // eski .svg yo'llar o'chirilgan — kelgan ma'lumotni .webp'ga normallashtiramiz
+          const data: Service[] = j.data.map((s: Service) => ({
+            ...s,
+            image: s.image?.replace(/\/img\/(.+)\.svg$/i, '/img/$1.webp') ?? s.image,
+          }));
+          setServices(data);
+        }
+      })
       .catch(() => {});
   }, []);
 

@@ -88,7 +88,7 @@ export default function GilamYuvishPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <div className="min-h-screen flex flex-col bg-white">
-        <Header />
+        <Header variant="solid" />
         <main className="flex-grow">
           <article className="max-w-screen-xl mx-auto px-6 md:px-16 lg:px-24 py-12 md:py-16">
             <h1 className="text-3xl md:text-5xl font-extrabold text-black mb-4">

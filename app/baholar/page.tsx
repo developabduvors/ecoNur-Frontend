@@ -11,7 +11,7 @@ export default function BaholarPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header — mobil va desktop uchun */}
-      <Header />
+      <Header variant="solid" />
 
       <main className="flex-grow flex flex-col items-center justify-center px-6 py-20">
         {/* Orqaga qaytish */}

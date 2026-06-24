@@ -4,8 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const Header = () => {
+// variant: 'overlay' = qorong'i hero ustida (oq matn, absolute) |
+//          'solid'   = oq fonli inner sahifa (yashil matn, sticky bar)
+export const Header = ({ variant = 'overlay' }: { variant?: 'overlay' | 'solid' }) => {
   const [open, setOpen] = useState(false);
+  const solid = variant === 'solid';
 
   const links = [
     { label: 'Biz haqimizda', href: '/#about-us' },
@@ -16,19 +19,39 @@ export const Header = () => {
   return (
     <>
       {/* ── DESKTOP HEADER ── */}
-      <header className="absolute top-0 left-0 right-0 z-50 hidden md:block">
-        <div className="max-w-screen-xl mx-auto px-8 pt-6 flex items-center justify-between gap-4">
+      <header
+        className={
+          solid
+            ? 'sticky top-0 z-50 hidden md:block bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm'
+            : 'absolute top-0 left-0 right-0 z-50 hidden md:block'
+        }
+      >
+        <div
+          className={`max-w-screen-xl mx-auto px-8 flex items-center justify-between gap-4 ${
+            solid ? 'py-4' : 'pt-6'
+          }`}
+        >
 
           {/* Logo — chap */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <Image src="/img/Eco Nur.svg" alt="Eco Nur" width={36} height={36} priority />
-            <span className="text-sm font-black text-white tracking-widest uppercase drop-shadow">
+            <span
+              className={`text-sm font-black tracking-widest uppercase ${
+                solid ? 'text-[#3a7d1e]' : 'text-white drop-shadow'
+              }`}
+            >
               ECO NUR
             </span>
-          </div>
+          </Link>
 
-          {/* Nav — oq pill, markazda */}
-          <nav className="bg-white/90 backdrop-blur-md rounded-full px-2 py-1.5 shadow-lg">
+          {/* Nav — overlay'da oq pill, solid'da tekis */}
+          <nav
+            className={
+              solid
+                ? ''
+                : 'bg-white/90 backdrop-blur-md rounded-full px-2 py-1.5 shadow-lg'
+            }
+          >
             <ul className="flex items-center gap-1">
               {links.map((l) => (
                 <li key={l.href}>

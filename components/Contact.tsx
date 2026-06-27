@@ -58,6 +58,12 @@ export const Contact = () => {
       });
     } catch { /* backend o'chiq bo'lsa ham ok */ }
 
+    // 24 soatdan keyin "Bizni baholang" banneri chiqishi uchun zakaz vaqtini saqlaymiz
+    try {
+      localStorage.setItem('econur_order_at', Date.now().toString());
+      localStorage.removeItem('econur_reviewed');
+    } catch {}
+
     setToast(true);
     setTimeout(() => setToast(false), 4000);
     setName('');

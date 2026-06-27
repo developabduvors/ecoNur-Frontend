@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
+  // Workspace root'ni shu papkaga qotiramiz. Aks holda yuqoridagi
+  // C:\Users\admin\package-lock.json sababli Next.js root'ni xato aniqlab,
+  // RSC manifestda global-error.js modulini topolmaydi (500 xato /).
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
   images: {
     // next/image rasmlarni AVIF/WebP'ga o'tkazadi — eng zamonaviy, eng yengil format
     formats: ["image/avif", "image/webp"],

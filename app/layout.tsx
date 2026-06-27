@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_URL, SITE_NAME, localBusinessJsonLd } from "@/lib/seo";
+import { ReviewPrompt } from "@/components/ReviewPrompt";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -96,6 +97,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <ReviewPrompt />
       </body>
     </html>
   );

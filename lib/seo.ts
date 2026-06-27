@@ -113,6 +113,84 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
+// OfferCatalog — narxli xizmatlar ro'yxati. Google bahoni rich-snippet
+// sifatida ko'rsatishi mumkin. Jadval bilan AYNAN bir manbadan to'ldiriladi.
+export function offerCatalogJsonLd(
+  name: string,
+  offers: { name: string; description: string; priceFrom: number; priceTo: number; unit: string }[],
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name,
+    itemListElement: offers.map((o) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: o.name,
+        description: o.description,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: business.name,
+          url: SITE_URL,
+          telephone: business.phone,
+        },
+        areaServed: business.city,
+      },
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        minPrice: o.priceFrom,
+        maxPrice: o.priceTo,
+        priceCurrency: 'UZS',
+        unitText: o.unit,
+      },
+    })),
+  };
+}
+
+// Review + AggregateRating — Google qidiruvda yulduzcha (★) reytingni
+// chiqaradi. Sharhlar biznesga (LocalBusiness) biriktiriladi.
+export function reviewsJsonLd(
+  reviews: { author: string; date: string; rating: number; text: string }[],
+) {
+  const ratingValue =
+    reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: business.name,
+    url: SITE_URL,
+    telephone: business.phone,
+    image: `${SITE_URL}/img/images.jpg`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: business.street,
+      addressLocality: business.city,
+      addressRegion: business.district,
+      addressCountry: business.country,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: ratingValue.toFixed(1),
+      reviewCount: reviews.length,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.author },
+      datePublished: r.date,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: r.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: r.text,
+    })),
+  };
+}
+
 export function serviceJsonLd(name: string, description: string, path: string) {
   return {
     '@context': 'https://schema.org',

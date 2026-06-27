@@ -46,7 +46,7 @@ export const ReviewForm = () => {
         <p className="text-2xl mb-2">🌿</p>
         <p className="font-bold text-black">Fikringiz uchun rahmat!</p>
         <p className="text-sm text-gray-600 mt-1">
-          Sharhingiz tekshiruvdan o&apos;tgach sahifada chiqadi.
+          Sharhingiz qabul qilindi va tez orada sahifada ko&apos;rinadi.
         </p>
       </div>
     );
